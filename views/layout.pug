@@ -1,0 +1,27 @@
+include mixins
+
+doctype html
+html(lang="nb-no")
+  head
+    if pageTitle
+      title #{pageTitle} | Blaugrana
+    else
+      title Blaugrana
+    meta(charset="utf-8")
+    meta(name="apple-mobile-web-app-title" content="Blaugrana")
+    meta(name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover")
+    meta(name="og:site_name" content="Blaugrana")
+    meta(name="og:type" content="website")
+    link(href="/img/favicon.svg" rel="icon")
+    link(href="/img/favicon-32.png" rel="alternate icon")
+    link(href="/img/favicon-180.png" rel="apple-touch-icon")
+    link(href="/css/legacy.css" rel="stylesheet")
+    link(href="/css/overrides.css" rel="stylesheet")
+    link(href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet")
+  body
+    header(class="bg-header")
+      div(class="bg-header-container")
+        a(class="bg-header-logo" href="/")
+          | Blaugrana
+    main(class="bg-content")
+      block content

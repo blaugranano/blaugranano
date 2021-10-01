@@ -1,0 +1,26 @@
+{
+  "name": "website",
+  "version": "1.9.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blaugranano/website.git"
+  },
+  "authors": [
+    "Lasse Brenden <lasse.brenden@blaugrana.no>"
+  ],
+  "private": true,
+  "scripts": {
+    "start": "node ./esm.js"
+  },
+  "engines": {
+    "node": "15.14.0",
+    "npm": "7.7.6"
+  },
+  "dependencies": {
+    "axios": "0.21.4",
+    "compression": "1.7.4",
+    "esm": "3.2.25",
+    "express": "4.17.1",
+    "pug": "^3.0.2"
+  }
+}

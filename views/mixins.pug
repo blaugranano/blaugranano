@@ -1,0 +1,17 @@
+mixin filterText(str)
+  - 
+    const filters = [
+      ['REFERAT/VURDERINGER', 'ig', 'Referat'],
+    ]
+    const filteredStr = filters.map(filter => str.replaceAll(new RegExp(filter[0], filter[1]), filter[2]))
+  | #{filteredStr}
+
+mixin postPreview(postData)
+  - const postImage = `https://wordpress.blaugrana.no/wp-content/uploads/${postData.wp_image.large.src}`
+  a(class="bg-preview" href=`/${postData.wp_slug}`)
+    figure(class="bg-preview-image" style=`background-image: url(${postImage})`)
+    article(class="bg-preview-text")
+      p(class="bg-preview-category")
+        | #{postData.wp_category.name}
+      h2(class="bg-preview-title")
+        +filterText(postData.wp_title.rendered)

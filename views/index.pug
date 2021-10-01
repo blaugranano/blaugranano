@@ -1,0 +1,8 @@
+extend layout
+
+block content
+  - const numberOfPosts = postData.length
+  - let postNumber = 0
+  div(class="bg-posts")
+    while (postNumber < numberOfPosts)
+      +postPreview(postData[postNumber++])

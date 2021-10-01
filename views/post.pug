@@ -1,0 +1,36 @@
+extend layout
+
+block content
+  div(class="bg-post post")
+    - const postImage = `https://wordpress.blaugrana.no/wp-content/uploads/${postData.wp_image.large.src}`
+    figure(class="bg-post-image" style=`background-image: url(${postImage})`)
+    article(class="bg-post-text")
+      h1(class="bg-post-title")
+        +filterText(postData.wp_title.rendered)
+      div(class="bg-post-byline")
+        span(class="bg-post-author")
+          Av #{postData.wp_author.name.toUpperCase()}
+        time(class="bg-post-date")
+          Publisert #{postData.wp_timestamp.rendered}
+      div(class="bg-post-content post-content")
+        | !{postData.wp_content.rendered}
+      div(class="bg-post-history")
+        +postPreview(postData.wp_adjacent.next || postData)
+        +postPreview(postData.wp_adjacent.previous)
+    div(class="bg-post-comments" id="disqus_thread")
+      script.
+        var disqus_config = function () {
+          this.page.url = 'https://www.blaugrana.no/#{postData.wp_slug}';
+          this.page.identifier = #{postData.id};
+          this.page.title = '#{postData.wp_title.rendered}';
+        };
+
+        !function() {
+          var d = document;
+          var s = d.createElement('script');
+
+          s.src = '//blaugranano.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+
+          (d.head || d.body).appendChild(s);
+        }();
