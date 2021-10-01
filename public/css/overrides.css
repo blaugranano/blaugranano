@@ -21,6 +21,7 @@ html {
 
 body {
   font-size: 1.8rem;
+  font-weight: 400;
 }
 
 svg {
@@ -314,11 +315,23 @@ a.bg-header-logo {
   text-transform: none;
 }
 
-.bg-post-content p:first-child {
-  font-weight: 300;
+.bg-post .bg-post-content > p:first-child {
+  font-weight: 400;
   font-size: 3rem;
   line-height: 1.2;
   margin-bottom: 4rem;
+}
+
+.bg-post .bg-post-content p {
+  color: var(--color-black);
+  font-weight: 400;
+}
+
+.bg-post .bg-post-content h2 {
+    color: #203257;
+    font-weight: 500;
+    font-style: normal;
+    font-size: 2.2rem;
 }
 
 @media screen and (max-width: 980px) {
