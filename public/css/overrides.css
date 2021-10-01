@@ -23,6 +23,15 @@ body {
   font-size: 1.8rem;
 }
 
+svg {
+  line-height: normal;
+  max-height: 100%;
+  position: relative;
+  top: 0.1rem;
+  vertical-align: top;
+  width: auto;
+}
+
 /* === Header === */
 
 .bg-header {
@@ -75,13 +84,36 @@ a.bg-header-logo {
 }
 
 .bg-header-item + .bg-header-item {
-  margin-left: 3rem;
+  margin-left: 2rem;
 }
 
 .bg-header-link {
   color: var(--color-white);
   font-weight: 600;
+  line-height: 3.4rem;
   text-transform: uppercase;
+  text-decoration: none;
+  box-shadow: 0 -0.2rem 0 0 white inset;
+}
+
+.bg-header-link:hover {
+  box-shadow: 0 -0.2rem 0 0 var(--color-yellow) inset;
+  color: var(--color-yellow);
+}
+
+.bg-header-icon {
+  box-shadow: none !important;
+}
+
+@media screen and (max-width: 1280px) {
+  .bg-header-container {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .bg-header-list {
+    margin-top: 1rem;
+  }
 }
 
 /* === Content === */

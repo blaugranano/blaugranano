@@ -1,10 +1,19 @@
 /**
-* Load modules
+* Import modules
 */
 import bg from './lib'
 import express from 'express'
 import gzip from 'compression'
 import http from 'http'
+
+/**
+* Import icons
+*/
+import { toString } from '@carbon/icon-helpers'
+import iconChat from '@carbon/icons/es/chat/32'
+import iconFacebook from '@carbon/icons/es/logo--facebook/32'
+import iconInstagram from '@carbon/icons/es/logo--instagram/32'
+import iconGitHub from '@carbon/icons/es/logo--github/32'
 
 /**
 * Initialize Express
@@ -28,12 +37,33 @@ app.use(express.json())
 app.use('/', express.static('./public'))
 
 /**
+* Configure Pug locals
+*/
+app.use((req, res, next) => {
+  res.locals = {
+    iconChat: toString(iconChat),
+    iconFacebook: toString(iconFacebook),
+    iconGitHub: toString(iconGitHub),
+    iconInstagram: toString(iconInstagram),
+  }
+
+  next()
+})
+
+/**
 * GET: /
 */
 app.get('/', async (req, res) => {
   const postData = await bg.posts.get({ limit: 32 })
 
-  res.render('index', { postData })
+  res.render('index', {
+    icons: {
+      iconFacebook: toString(iconFacebook),
+      iconGitHub: toString(iconGitHub),
+      iconInstagram: toString(iconInstagram),
+    },
+    postData,
+  })
 })
 
 /**
