@@ -11,8 +11,9 @@ import http from 'http'
 */
 import { toString } from '@carbon/icon-helpers'
 import iconFacebook from '@carbon/icons/es/logo--facebook/32'
-import iconInstagram from '@carbon/icons/es/logo--instagram/32'
 import iconGitHub from '@carbon/icons/es/logo--github/32'
+import iconInstagram from '@carbon/icons/es/logo--instagram/32'
+import iconTwitter from '@carbon/icons/es/logo--twitter/32'
 
 /**
 * Initialize Express
@@ -43,6 +44,7 @@ app.use((req, res, next) => {
     iconFacebook: toString(iconFacebook),
     iconGitHub: toString(iconGitHub),
     iconInstagram: toString(iconInstagram),
+    iconTwitter: toString(iconTwitter),
   }
 
   next()
@@ -87,7 +89,7 @@ app.get(':postCategory(/[a-z-]+)?/:postDate([0-9]{4}/[0-9]{2}/[0-9]{2})/:postSlu
     postSlug,
   } = req.params
 
-  res.redirect(302, `/${postCategory}/${postId}/${postSlug}`)
+  res.redirect(302, `https://www.blaugrana.no/${postCategory}/${postId}/${postSlug}`)
 })
 
 /**
