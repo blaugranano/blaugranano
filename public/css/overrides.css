@@ -39,20 +39,48 @@ body {
   margin-left: auto;
   margin-right: auto;
   max-width: var(--grid-desktop);
-  padding-bottom: 3rem;
-  padding-top: 3rem;
+  padding-bottom: 4rem;
+  padding-top: 4rem;
   position: relative;
+}
+
+@media screen and (max-width: 1280px) {
+  .bg-header-container {
+    padding: 4rem;
+  }
 }
 
 a.bg-header-logo {
   border: 0;
   color: var(--color-white);
   display: inline-block;
+  flex: 1;
   font-size: 3.4rem;
   font-style: italic;
   font-weight: bold;
   padding-bottom: 0;
   text-decoration: none !important;
+  text-transform: uppercase;
+}
+
+.bg-header-list {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  list-style: none;
+}
+
+.bg-header-item {
+  display: inline-block;
+}
+
+.bg-header-item + .bg-header-item {
+  margin-left: 3rem;
+}
+
+.bg-header-link {
+  color: var(--color-white);
+  font-weight: 600;
   text-transform: uppercase;
 }
 
@@ -62,7 +90,14 @@ a.bg-header-logo {
   margin-left: auto;
   margin-right: auto;
   max-width: var(--grid-desktop);
-  padding: 4rem;
+  padding-bottom: 4rem;
+  padding-top: 4rem;
+}
+
+@media screen and (max-width: 1280px) {
+  .bg-content {
+    padding: 4rem;
+  }
 }
 
 /* === Posts === */

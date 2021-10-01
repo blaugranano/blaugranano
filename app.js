@@ -42,8 +42,6 @@ app.get('/', async (req, res) => {
 app.get(':postCategory(/[a-z-]+)/:postId([0-9]+)/:postSlug([0-9a-z-]+)', async (req, res) => {
   const postData = await bg.posts.get({ id: req.params.postId })
 
-  console.log(postData);
-
   res.render('post', { postData })
 })
 
