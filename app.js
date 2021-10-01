@@ -10,7 +10,6 @@ import http from 'http'
 * Import icons
 */
 import { toString } from '@carbon/icon-helpers'
-import iconChat from '@carbon/icons/es/chat/32'
 import iconFacebook from '@carbon/icons/es/logo--facebook/32'
 import iconInstagram from '@carbon/icons/es/logo--instagram/32'
 import iconGitHub from '@carbon/icons/es/logo--github/32'
@@ -41,7 +40,6 @@ app.use('/', express.static('./public'))
 */
 app.use((req, res, next) => {
   res.locals = {
-    iconChat: toString(iconChat),
     iconFacebook: toString(iconFacebook),
     iconGitHub: toString(iconGitHub),
     iconInstagram: toString(iconInstagram),
@@ -67,12 +65,29 @@ app.get('/', async (req, res) => {
 })
 
 /**
-* GET: /:postCategory?/:postDate/:postSlug/:postId
+* GET: /:postCategory/:postId/:postSlug
 */
 app.get(':postCategory(/[a-z-]+)/:postId([0-9]+)/:postSlug([0-9a-z-]+)', async (req, res) => {
   const postData = await bg.posts.get({ id: req.params.postId })
+  const pageTitle = postData.wp_title.rendered
 
-  res.render('post', { postData })
+  res.render('post', {
+    pageTitle,
+    postData,
+  })
+})
+
+/**
+* GET: /:postCategory/:postDate/:postSlug/:postId
+*/
+app.get(':postCategory(/[a-z-]+)?/:postDate([0-9]{4}/[0-9]{2}/[0-9]{2})/:postSlug([0-9a-z-]+)/:postId([0-9]+)', function (req, res) {
+  const {
+    postCategory,
+    postId,
+    postSlug,
+  } = req.params
+
+  res.redirect(302, `/${postCategory}/${postId}/${postSlug}`)
 })
 
 /**
