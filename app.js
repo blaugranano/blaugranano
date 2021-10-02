@@ -57,11 +57,6 @@ app.get('/', async (req, res) => {
   const postData = await bg.posts.get({ limit: 32 })
 
   res.render('index', {
-    icons: {
-      iconFacebook: toString(iconFacebook),
-      iconGitHub: toString(iconGitHub),
-      iconInstagram: toString(iconInstagram),
-    },
     postData,
   })
 })
