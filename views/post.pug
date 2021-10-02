@@ -6,7 +6,7 @@ block content
     figure(class="bg-post-image" style=`background-image: url(${postImage})`)
     article(class="bg-post-text")
       h1(class="bg-post-title")
-        +filterText(postData.wp_title.rendered)
+        | #{postData.wp_title.rendered}
       div(class="bg-post-byline")
         span(class="bg-post-author")
           Av #{postData.wp_author.name.toUpperCase()}
