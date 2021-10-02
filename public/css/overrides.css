@@ -126,6 +126,12 @@ a.bg-header-logo {
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .bg-menu-list::-webkit-scrollbar {
+    display: none;
   }
 }
 
