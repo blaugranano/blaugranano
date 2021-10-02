@@ -62,12 +62,18 @@ svg {
 a.bg-header-logo {
   border: 0;
   color: var(--color-white);
-  font-size: 3.4rem;
+  font-size: 5rem;
   font-style: italic;
   font-weight: bold;
   padding-bottom: 0;
   text-decoration: none !important;
   text-transform: uppercase;
+}
+
+@media screen and (max-width: 1280px) {
+  a.bg-header-logo {
+    font-size: 3.5rem;
+  }
 }
 
 /* === Menu === */
