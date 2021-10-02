@@ -23,21 +23,29 @@ html(lang="nb-no")
       div(class="bg-header-container")
         a(class="bg-header-logo" href="/")
           | Blaugrana
-        ul(class="bg-header-list")
-          li(class="bg-header-item")
-            a(class="bg-header-link" href="mailto:post@blaugrana.no")
+    nav(class="bg-menu")
+      div(class="bg-menu-container")
+        ul(class="bg-menu-list")
+          li(class="bg-menu-item")
+            a(class="bg-menu-link" href="/nyheter/30660/bli-skribent")
+              | Bli skribent
+          li(class="bg-menu-item")
+            a(class="bg-menu-link" href="mailto:&#112;&#111;&#115;&#116;&#064;&#098;&#108;&#097;&#117;&#103;&#114;&#097;&#110;&#097;&#046;&#110;&#111;")
               | Kontakt oss
-          li(class="bg-header-item")
-            a(class="bg-header-link bg-header-icon" href="https://facebook.com/blaugranano" target="_blank")
+          li(class="bg-menu-item")
+            a(class="bg-menu-link" href="/nyheter/30274/stott-oss")
+              | Støtt oss
+          li(class="bg-menu-item")
+            a(class="bg-menu-link bg-menu-icon" href="https://facebook.com/blaugranano" target="_blank")
               != iconFacebook
-          li(class="bg-header-item")
-            a(class="bg-header-link bg-header-icon" href="https://github.com/blaugranano" target="_blank")
+          li(class="bg-menu-item")
+            a(class="bg-menu-link bg-menu-icon" href="https://github.com/blaugranano" target="_blank")
               != iconGitHub
-          li(class="bg-header-item")
-            a(class="bg-header-link bg-header-icon" href="https://instagram.com/blaugranano" target="_blank")
+          li(class="bg-menu-item")
+            a(class="bg-menu-link bg-menu-icon" href="https://instagram.com/blaugranano" target="_blank")
               != iconInstagram
-          li(class="bg-header-item")
-            a(class="bg-header-link bg-header-icon" href="https://twitter.com/blaugranano" target="_blank")
+          li(class="bg-menu-item")
+            a(class="bg-menu-link bg-menu-icon" href="https://twitter.com/blaugranano" target="_blank")
               != iconTwitter
     main(class="bg-content")
       block content

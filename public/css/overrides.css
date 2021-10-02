@@ -44,7 +44,6 @@ svg {
 .bg-header-container {
   align-items: center;
   display: flex;
-  flex: 1 1;
   justify-content: center;
   margin-left: auto;
   margin-right: auto;
@@ -63,8 +62,6 @@ svg {
 a.bg-header-logo {
   border: 0;
   color: var(--color-white);
-  display: inline-block;
-  flex: 1;
   font-size: 3.4rem;
   font-style: italic;
   font-weight: bold;
@@ -73,47 +70,56 @@ a.bg-header-logo {
   text-transform: uppercase;
 }
 
-.bg-header-list {
+/* === Menu === */
+
+.bg-menu {
+  background-image: linear-gradient(rgb(145, 25, 45), rgba(145, 25, 45, 0.85));
+  padding: 1rem;
+}
+
+.bg-menu-container {
+  align-items: center;
   display: flex;
-  flex: 1;
-  justify-content: flex-end;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: var(--grid-desktop);
+}
+
+.bg-menu-list {
   list-style: none;
 }
 
-.bg-header-item {
+.bg-menu-item {
   display: inline-block;
 }
 
-.bg-header-item + .bg-header-item {
+.bg-menu-item + .bg-menu-item {
   margin-left: 2rem;
 }
 
-.bg-header-link {
+.bg-menu-link {
   color: var(--color-white);
+  font-size: 1.6rem;
   font-weight: 600;
   line-height: 3.4rem;
-  text-transform: uppercase;
   text-decoration: none;
-  box-shadow: 0 -0.2rem 0 0 white inset;
+  text-transform: uppercase;
 }
 
-.bg-header-link:hover {
-  box-shadow: 0 -0.2rem 0 0 var(--color-yellow) inset;
+.bg-menu-link:hover {
   color: var(--color-yellow);
 }
 
-.bg-header-icon {
+.bg-menu-icon {
   box-shadow: none !important;
 }
 
 @media screen and (max-width: 1280px) {
-  .bg-header-container {
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .bg-header-list {
-    margin-top: 1rem;
+  .bg-menu-list {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
   }
 }
 
