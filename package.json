@@ -1,9 +1,9 @@
 {
-  "name": "website",
-  "version": "1.9.0",
+  "name": "blaugranano",
+  "version": "2.0.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/blaugranano/website.git"
+    "url": "https://github.com/blaugranano/blaugranano.git"
   },
   "authors": [
     "Lasse Brenden <lasse.brenden@blaugrana.no>"
