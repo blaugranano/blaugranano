@@ -44,6 +44,7 @@ svg {
 .bg-header-container {
   align-items: center;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   margin-left: auto;
   margin-right: auto;
@@ -70,9 +71,21 @@ a.bg-header-logo {
   text-transform: uppercase;
 }
 
+.bg-header-tagline {
+  color: var(--color-white);
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  margin-top: 0.4rem;
+}
+
 @media screen and (max-width: 1280px) {
   a.bg-header-logo {
-    font-size: 3.5rem;
+    font-size: 4rem;
+  }
+
+  .bg-header-tagline {
+    font-size: 1.2rem;
   }
 }
 
