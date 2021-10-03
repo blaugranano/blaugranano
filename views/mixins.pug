@@ -1,9 +1,17 @@
 mixin postPreview(postData)
-  - const postImage = `https://wordpress.blaugrana.no/wp-content/uploads/${postData.wp_image.large.src}`
-  a(class="bg-preview" href=`/${postData.wp_slug}`)
-    figure(class="bg-preview-image" style=`background-image: url(${postImage})`)
-    article(class="bg-preview-text")
-      p(class="bg-preview-category")
-        | #{postData.wp_category.name}
-      h2(class="bg-preview-title")
-        | #{postData.wp_title.rendered}
+  if postData
+    -
+      let postImage
+      try {
+        postImage = `https://${process.env.WP_DOMAIN}/wp-content/uploads/${postData.wp_image.large.src}` || ''
+      } catch (err) {
+        console.error(err)
+      }
+    a(class="bg-preview" href=`/${postData.wp_slug}`)
+      if postImage
+        figure(class="bg-preview-image" style=`background-image: url(${postImage})`)
+      article(class="bg-preview-text")
+        p(class="bg-preview-category")
+          | #{postData.wp_category.name}
+        h2(class="bg-preview-title")
+          | #{postData.wp_title.rendered}

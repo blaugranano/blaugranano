@@ -4,7 +4,6 @@
 import bg from './lib'
 import express from 'express'
 import gzip from 'compression'
-import http from 'http'
 
 /**
 * Import icons
@@ -25,8 +24,6 @@ const app = express()
 */
 app.set('view engine', 'pug')
 app.set('views', './views')
-app.set('host', process.env.HOST || 'localhost')
-app.set('port', process.env.PORT || 3000)
 
 /**
 * Configure middleware
@@ -77,7 +74,7 @@ app.get(':postCategory(/[a-z-]+)/:postId([0-9]+)/:postSlug([0-9a-z-]+)', async (
 /**
 * GET: /:postCategory/:postDate/:postSlug/:postId
 */
-app.get(':postCategory(/[a-z-]+)?/:postDate([0-9]{4}/[0-9]{2}/[0-9]{2})/:postSlug([0-9a-z-]+)/:postId([0-9]+)', function (req, res) {
+app.get(':postCategory(/[a-z-]+)?/:postDate([0-9]{4}/[0-9]{2}/[0-9]{2})/:postSlug([0-9a-z-]+)/:postId([0-9]+)', (req, res) => {
   const {
     postCategory,
     postId,
@@ -88,8 +85,15 @@ app.get(':postCategory(/[a-z-]+)?/:postDate([0-9]{4}/[0-9]{2}/[0-9]{2})/:postSlu
 })
 
 /**
+* GET: /favicon.ico
+*/
+app.get('/favicon.ico', (req, res) => {
+  res.redirect(302, '/img/favicon-32.png')
+})
+
+/**
 * Create and start server
 */
-const server = http.createServer(app).listen(app.get('port'), () => {
-  console.log('>> Server listening on http://%s:%d/', app.get('host'), server.address().port)
+app.listen(process.env.APP_PORT, () => {
+  console.log(`>> Server listening on http://${process.env.APP_HOST}:${process.env.APP_PORT}/`)
 })
