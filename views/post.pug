@@ -15,9 +15,9 @@ block content
         | #{postData.wp_title.rendered}
       div(class="bg-post-byline")
         span(class="bg-post-author")
-          Av #{postData.wp_author.name.toUpperCase()}
+          | Av #{postData.wp_author.name.toUpperCase()}
         time(class="bg-post-date")
-          Publisert #{postData.wp_timestamp.rendered}
+          | Publisert #{postData.wp_timestamp.rendered}
       div(class="bg-post-content post-content")
         | !{postData.wp_content.rendered}
       div(class="bg-post-history")

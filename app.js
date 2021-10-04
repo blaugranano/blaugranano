@@ -48,6 +48,13 @@ app.use((req, res, next) => {
 })
 
 /**
+* GET: /favicon.ico
+*/
+app.get('/favicon.ico', (req, res) => {
+  res.redirect(302, '/img/favicon-32.png')
+})
+
+/**
 * GET: /
 */
 app.get('/', async (req, res) => {
@@ -61,12 +68,11 @@ app.get('/', async (req, res) => {
 /**
 * GET: /:postCategory/:postId/:postSlug
 */
-app.get(':postCategory(/[a-z-]+)/:postId([0-9]+)/:postSlug([0-9a-z-]+)', async (req, res) => {
+app.get('/:postCategory/:postId/:postSlug', async (req, res) => {
   const postData = await bg.posts.get({ id: req.params.postId })
-  const pageTitle = postData.wp_title.rendered
 
   res.render('post', {
-    pageTitle,
+    pageTitle: postData.wp_title.rendered,
     postData,
   })
 })
@@ -74,21 +80,30 @@ app.get(':postCategory(/[a-z-]+)/:postId([0-9]+)/:postSlug([0-9a-z-]+)', async (
 /**
 * GET: /:postCategory/:postDate/:postSlug/:postId
 */
-app.get(':postCategory(/[a-z-]+)?/:postDate([0-9]{4}/[0-9]{2}/[0-9]{2})/:postSlug([0-9a-z-]+)/:postId([0-9]+)', (req, res) => {
+app.get('/:postCategory/:postDate/:postSlug/:postId', async (req, res) => {
   const {
     postCategory,
     postId,
     postSlug,
   } = req.params
 
-  res.redirect(302, `https://www.blaugrana.no/${postCategory}/${postId}/${postSlug}`)
+  res.redirect(302, `${req.protocol}://${req.get('host')}/${postCategory}/${postId}/${postSlug}`)
 })
 
 /**
-* GET: /favicon.ico
+* GET: /:postSlug
 */
-app.get('/favicon.ico', (req, res) => {
-  res.redirect(302, '/img/favicon-32.png')
+app.get('/:postSlug', async (req, res, next) => {
+  const postData = await bg.pages.get({ slug: req.params.postSlug })
+
+  if (!postData.length) {
+    return next()
+  }
+
+  res.render('page', {
+    pageTitle: postData[0].wp_title.rendered,
+    postData: postData[0],
+  })
 })
 
 /**
