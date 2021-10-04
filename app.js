@@ -48,6 +48,13 @@ app.use((req, res, next) => {
 })
 
 /**
+* GET: /favicon.ico
+*/
+app.get('/favicon.ico', (req, res) => {
+  res.redirect(302, '/img/favicon-32.png')
+})
+
+/**
 * GET: /
 */
 app.get('/', async (req, res) => {
@@ -59,49 +66,44 @@ app.get('/', async (req, res) => {
 })
 
 /**
-* GET: /:postCategory/:postId/:postName
+* GET: /:postCategory/:postId/:postSlug
 */
-app.get('/:postCategory(/[a-z-]+)/:postId([0-9]+)/:postName([0-9a-z-]+)', async (req, res) => {
+app.get('/:postCategory/:postId/:postSlug', async (req, res) => {
   const postData = await bg.posts.get({ id: req.params.postId })
-  const pageTitle = postData.wp_title.rendered
 
   res.render('post', {
-    pageTitle,
+    pageTitle: postData.wp_title.rendered,
     postData,
   })
 })
 
 /**
-* GET: /:postCategory/:postDate/:postName/:postId
+* GET: /:postCategory/:postDate/:postSlug/:postId
 */
-app.get('/:postCategory(/[a-z-]+)?/:postDate([0-9]{4}/[0-9]{2}/[0-9]{2})/:postName([0-9a-z-]+)/:postId([0-9]+)', (req, res) => {
+app.get('/:postCategory/:postDate/:postSlug/:postId', async (req, res) => {
   const {
     postCategory,
     postId,
-    postName,
+    postSlug,
   } = req.params
 
-  res.redirect(302, `https://www.blaugrana.no/${postCategory}/${postId}/${postName}`)
+  res.redirect(302, `${req.protocol}://${req.get('host')}/${postCategory}/${postId}/${postSlug}`)
 })
 
 /**
-* GET: /:postName
+* GET: /:postSlug
 */
-app.get('/:postName([0-9a-z-]+)', async (req, res) => {
-  const postData = await bg.pages.get({ slug: req.params.postName })
-  const pageTitle = postData.wp_title.rendered
+app.get('/:postSlug', async (req, res, next) => {
+  const postData = await bg.pages.get({ slug: req.params.postSlug })
 
-  res.render('post', {
-    pageTitle,
-    postData,
+  if (!postData.length) {
+    return next()
+  }
+
+  res.render('page', {
+    pageTitle: postData[0].wp_title.rendered,
+    postData: postData[0],
   })
-})
-
-/**
-* GET: /favicon.ico
-*/
-app.get('/favicon.ico', (req, res) => {
-  res.redirect(302, '/img/favicon-32.png')
 })
 
 /**

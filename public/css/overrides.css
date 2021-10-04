@@ -322,13 +322,13 @@ a.bg-header-logo {
   font-style: italic;
   font-weight: 600;
   line-height: 1.1;
+  margin-bottom: 4rem;
   text-align: center;
   text-transform: uppercase;
 }
 
 .bg-post-byline {
   margin-bottom: 8rem;
-  margin-top: 4rem;
   text-align: center;
 }
 
