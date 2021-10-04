@@ -59,9 +59,9 @@ app.get('/', async (req, res) => {
 })
 
 /**
-* GET: /:postCategory/:postId/:postSlug
+* GET: /:postCategory/:postId/:postName
 */
-app.get(':postCategory(/[a-z-]+)/:postId([0-9]+)/:postSlug([0-9a-z-]+)', async (req, res) => {
+app.get('/:postCategory(/[a-z-]+)/:postId([0-9]+)/:postName([0-9a-z-]+)', async (req, res) => {
   const postData = await bg.posts.get({ id: req.params.postId })
   const pageTitle = postData.wp_title.rendered
 
@@ -72,16 +72,29 @@ app.get(':postCategory(/[a-z-]+)/:postId([0-9]+)/:postSlug([0-9a-z-]+)', async (
 })
 
 /**
-* GET: /:postCategory/:postDate/:postSlug/:postId
+* GET: /:postCategory/:postDate/:postName/:postId
 */
-app.get(':postCategory(/[a-z-]+)?/:postDate([0-9]{4}/[0-9]{2}/[0-9]{2})/:postSlug([0-9a-z-]+)/:postId([0-9]+)', (req, res) => {
+app.get('/:postCategory(/[a-z-]+)?/:postDate([0-9]{4}/[0-9]{2}/[0-9]{2})/:postName([0-9a-z-]+)/:postId([0-9]+)', (req, res) => {
   const {
     postCategory,
     postId,
-    postSlug,
+    postName,
   } = req.params
 
-  res.redirect(302, `https://www.blaugrana.no/${postCategory}/${postId}/${postSlug}`)
+  res.redirect(302, `https://www.blaugrana.no/${postCategory}/${postId}/${postName}`)
+})
+
+/**
+* GET: /:postName
+*/
+app.get('/:postName([0-9a-z-]+)', async (req, res) => {
+  const postData = await bg.pages.get({ slug: req.params.postName })
+  const pageTitle = postData.wp_title.rendered
+
+  res.render('post', {
+    pageTitle,
+    postData,
+  })
 })
 
 /**
