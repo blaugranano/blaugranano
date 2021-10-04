@@ -346,6 +346,13 @@ a.bg-header-logo {
   text-transform: none;
 }
 
+.bg-post .bg-post-content h2 {
+  color: #203257;
+  font-size: 2.2rem;
+  font-style: normal;
+  font-weight: 500;
+}
+
 .bg-post .bg-post-content > p:first-child {
   font-size: 3rem;
   font-weight: 400;
@@ -358,11 +365,31 @@ a.bg-header-logo {
   font-weight: 400;
 }
 
-.bg-post .bg-post-content h2 {
-  color: #203257;
-  font-size: 2.2rem;
-  font-style: normal;
-  font-weight: 500;
+.bg-post .bg-post-content p:not(:last-child),
+.bg-post .bg-post-content ul:not(:last-child) {
+  margin-bottom: 2rem;
+}
+
+.bg-post .bg-post-content ul {
+  padding-left: 2rem;
+}
+
+.bg-post .bg-post-content ul li::before {
+  display: inline;
+  left: 0;
+  margin-right: 2rem;
+  position: relative;
+}
+
+.bg-post .bg-post-content img {
+  background: none;
+  height: auto;
+  max-width: 100%;
+  width: auto;
+}
+
+.bg-post .bg-border img {
+  border: 0.1rem solid var(--color-silver);
 }
 
 @media screen and (max-width: 980px) {
