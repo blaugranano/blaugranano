@@ -37,7 +37,7 @@ app.use('/', express.static('./public'))
 * Configure Pug locals
 */
 app.use(async (req, res, next) => {
-  const menuData = await bg.menus.get({ id: 107 })
+  const menuData = await bg.menus.get({ id: process.env.WP_MENU_ID })
 
   res.locals = {
     menuData,
