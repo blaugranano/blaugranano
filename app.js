@@ -36,8 +36,11 @@ app.use('/', express.static('./public'))
 /**
 * Configure Pug locals
 */
-app.use((req, res, next) => {
+app.use(async (req, res, next) => {
+  const menuData = await bg.menus.get({ id: 107 })
+
   res.locals = {
+    menuData,
     iconFacebook: toString(iconFacebook),
     iconGitHub: toString(iconGitHub),
     iconInstagram: toString(iconInstagram),

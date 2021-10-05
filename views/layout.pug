@@ -29,12 +29,10 @@ html(lang="nb-no")
     nav(class="bg-menu")
       div(class="bg-menu-container")
         ul(class="bg-menu-list")
-          li(class="bg-menu-item")
-            a(class="bg-menu-link" href="mailto:&#112;&#111;&#115;&#116;&#064;&#098;&#108;&#097;&#117;&#103;&#114;&#097;&#110;&#097;&#046;&#110;&#111;")
-              | Kontakt oss
-          li(class="bg-menu-item")
-            a(class="bg-menu-link" href="/nyheter/30274/stott-oss")
-              | Støtt oss
+          each menuItem in menuData
+            li(class="bg-menu-item")
+              a(class="bg-menu-link" href=menuItem.url)
+                | #{menuItem.title}
           li(class="bg-menu-item")
             a(class="bg-menu-link bg-menu-icon" href="https://facebook.com/blaugranano" target="_blank")
               != iconFacebook
