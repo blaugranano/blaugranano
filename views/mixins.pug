@@ -1,17 +1,9 @@
 mixin postPreview(postData)
   if postData
-    -
-      let postImage
-      try {
-        postImage = `https://${process.env.WP_DOMAIN}/wp-content/uploads/${postData.wp_image.large.src}` || ''
-      } catch (err) {
-        console.error(err)
-      }
-    a(class="bg-preview" href=`/${postData.wp_slug}`)
-      if postImage
-        figure(class="bg-preview-image" style=`background-image: url(${postImage})`)
+    a(class="bg-preview" href=postData.post_slug)
+      figure(class="bg-preview-image" style=`background-image: url(${postData.post_image})`)
       article(class="bg-preview-text")
         p(class="bg-preview-category")
-          | #{postData.wp_category.name}
+          | #{postData.post_category}
         h2(class="bg-preview-title")
-          | #{postData.wp_title.rendered}
+          | #{postData.post_title}

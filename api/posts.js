@@ -1,7 +1,7 @@
 /**
 * Import packages
 */
-import utils from './utils'
+import utils from './utils.js'
 
 /**
 * Configure package
@@ -13,13 +13,13 @@ const WP_ENDPOINT = `https://${process.env.WP_DOMAIN}/wp-json/${process.env.WP_A
 * @param {Object} params Parameters to filter the request
 * @returns A response object
 */
-async function get({ id, limit, offset, status, type }) {
+async function get({ id, limit, offset, status }) {
   try {
     const url = id ? `${WP_ENDPOINT}/posts/${id}` : `${WP_ENDPOINT}/posts`
     const params = {
       offset: parseInt(offset) || 0,
-      per_page: parseInt(limit) || 1,
-      status: status || 'publish',
+      limit: parseInt(limit) || 1,
+      post_status: status || 'publish',
     }
 
     return utils.getUrl(url, { params })

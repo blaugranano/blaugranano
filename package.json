@@ -9,12 +9,12 @@
     "Lasse Brenden <lasse.brenden@blaugrana.no>"
   ],
   "private": true,
-  "scripts": {
-    "start": "node -r dotenv/config ./esm.js"
-  },
   "engines": {
     "node": "15.14.0",
     "npm": "7.7.6"
+  },
+  "scripts": {
+    "start": "node -r dotenv/config ./esm.js"
   },
   "dependencies": {
     "@carbon/icon-helpers": "10.24.0",
