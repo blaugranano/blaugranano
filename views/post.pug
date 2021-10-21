@@ -13,6 +13,9 @@ block content
           | Publisert #{postData.post_date}
       div(class="bg-post-content post-content")
         | !{postData.post_content}
+      div(class="bg-post-history post-history")
+        +postPreview(postData.next_post)
+        +postPreview(postData.previous_post)
     div(class="bg-post-comments" id="disqus_thread")
       script.
         var disqus_config = function () {
