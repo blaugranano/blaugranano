@@ -1,7 +1,7 @@
 /**
 * Import packages
 */
-import utils from './utils'
+import utils from './utils.js'
 
 /**
 * Configure package
@@ -9,18 +9,15 @@ import utils from './utils'
 const WP_ENDPOINT = `https://${process.env.WP_DOMAIN}/wp-json/${process.env.WP_API_VERSION}`
 
 /**
-* Get pages
+* Get menus
 * @param {Object} params Parameters to filter the request
 * @returns A response object
 */
-async function get({ id, slug }) {
+async function get({ id }) {
   try {
-    const url = id ? `${WP_ENDPOINT}/pages/${id}` : `${WP_ENDPOINT}/pages`
-    const params = {
-      slug,
-    }
+    const url = `${WP_ENDPOINT}/menus/${id}`
 
-    return utils.getUrl(url, { params })
+    return utils.getUrl(url)
   } catch (error) {
     console.log(error)
 

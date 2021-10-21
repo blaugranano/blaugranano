@@ -2,16 +2,9 @@ extend layout
 
 block content
   div(class="bg-post post")
-    -
-      let postImage
-      try {
-        postImage = `https://${process.env.WP_DOMAIN}/wp-content/uploads/${postData.wp_image.large.src}` || ''
-      } catch (err) {
-        console.error(err)
-      }
-    figure(class="bg-post-image" style=`background-image: url(${postImage})`)
+    figure(class="bg-post-image" style=`background-image: url(${postData.post_image})`)
     article(class="bg-post-text")
       h1(class="bg-post-title")
-        | #{postData.wp_title.rendered}
+        | #{postData.post_title}
       div(class="bg-post-content post-content")
-        | !{postData.wp_content.rendered}
+        | !{postData.post_content}

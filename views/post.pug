@@ -2,33 +2,23 @@ extend layout
 
 block content
   div(class="bg-post post")
-    -
-      let postImage
-      try {
-        postImage = `https://${process.env.WP_DOMAIN}/wp-content/uploads/${postData.wp_image.large.src}` || ''
-      } catch (err) {
-        console.error(err)
-      }
-    figure(class="bg-post-image" style=`background-image: url(${postImage})`)
+    figure(class="bg-post-image" style=`background-image: url(${postData.post_image})`)
     article(class="bg-post-text")
       h1(class="bg-post-title")
-        | #{postData.wp_title.rendered}
+        | #{postData.post_title}
       div(class="bg-post-byline")
         span(class="bg-post-author")
-          | Av #{postData.wp_author.name.toUpperCase()}
+          | Av #{postData.post_author}
         time(class="bg-post-date")
-          | Publisert #{postData.wp_timestamp.rendered}
+          | Publisert #{postData.post_date}
       div(class="bg-post-content post-content")
-        | !{postData.wp_content.rendered}
-      div(class="bg-post-history")
-        +postPreview(postData.wp_adjacent.next || postData)
-        +postPreview(postData.wp_adjacent.previous)
+        | !{postData.post_content}
     div(class="bg-post-comments" id="disqus_thread")
       script.
         var disqus_config = function () {
-          this.page.url = 'https://www.blaugrana.no/#{postData.wp_slug}';
-          this.page.identifier = #{postData.id};
-          this.page.title = '#{postData.wp_title.rendered}';
+          this.page.url = 'https://www.blaugrana.no/#{postData.post_slug}';
+          this.page.identifier = #{postData.post_id};
+          this.page.title = '#{postData.post_title}';
         };
 
         !function() {

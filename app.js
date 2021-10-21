@@ -1,7 +1,7 @@
 /**
 * Import modules
 */
-import bg from './lib'
+import bg from './api'
 import express from 'express'
 import gzip from 'compression'
 
@@ -72,10 +72,10 @@ app.get('/', async (req, res) => {
 * GET: /:postCategory/:postId/:postSlug
 */
 app.get('/:postCategory/:postId/:postSlug', async (req, res) => {
-  const postData = await bg.posts.get({ id: req.params.postId })
+  const [ postData ] = await bg.posts.get({ id: req.params.postId })
 
   res.render('post', {
-    pageTitle: postData.wp_title.rendered,
+    pageTitle: postData.post_title,
     postData,
   })
 })
@@ -104,7 +104,7 @@ app.get('/:postSlug', async (req, res, next) => {
   }
 
   res.render('page', {
-    pageTitle: postData[0].wp_title.rendered,
+    pageTitle: postData[0].post_title,
     postData: postData[0],
   })
 })
