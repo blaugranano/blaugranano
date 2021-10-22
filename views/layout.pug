@@ -31,8 +31,8 @@ html(lang="nb-no")
         ul(class="bg-menu-list")
           each menuItem in menuData
             li(class="bg-menu-item")
-              a(class="bg-menu-link" href=menuItem.url)
-                | #{menuItem.title}
+              a(class="bg-menu-link" href=menuItem.item_url)
+                | #{menuItem.item_title}
           li(class="bg-menu-item")
             a(class="bg-menu-link bg-menu-icon" href="https://facebook.com/blaugranano" target="_blank")
               != iconFacebook

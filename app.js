@@ -37,7 +37,7 @@ app.use('/', express.static('./public'))
 * Configure Pug locals
 */
 app.use(async (req, res, next) => {
-  const menuData = await bg.menus.get({ id: process.env.WP_MENU_ID })
+  const { data: menuData } = await bg.menus.get({ id: process.env.WP_MENU_ID })
 
   res.locals = {
     menuData,
@@ -61,7 +61,7 @@ app.get('/favicon.ico', (req, res) => {
 * GET: /
 */
 app.get('/', async (req, res) => {
-  const postData = await bg.posts.get({ limit: 32 })
+  const { data: postData } = await bg.posts.get({ limit: 32 })
 
   res.render('index', {
     postData,
@@ -72,7 +72,7 @@ app.get('/', async (req, res) => {
 * GET: /:postCategory/:postId/:postSlug
 */
 app.get('/:postCategory/:postId/:postSlug', async (req, res) => {
-  const [ postData ] = await bg.posts.get({ id: req.params.postId })
+  const { data: postData } = await bg.posts.get({ id: req.params.postId })
 
   res.render('post', {
     pageTitle: postData.post_title,
@@ -97,15 +97,15 @@ app.get('/:postCategory/:postDate/:postSlug/:postId', async (req, res) => {
 * GET: /:postSlug
 */
 app.get('/:postSlug', async (req, res, next) => {
-  const postData = await bg.pages.get({ slug: req.params.postSlug })
+  const { data: postData } = await bg.pages.get({ slug: req.params.postSlug })
 
-  if (!postData.length) {
+  if (!postData.post_title) {
     return next()
   }
 
   res.render('page', {
-    pageTitle: postData[0].post_title,
-    postData: postData[0],
+    pageTitle: postData.post_title,
+    postData: postData,
   })
 })
 
