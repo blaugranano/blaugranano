@@ -9,9 +9,11 @@ This is the source code for [blaugrana.no](https://www.blaugrana.no/), the websi
 - [ ] Add archive feature
 - [ ] Add search feature
 
-## Contributing to [blaugrana.no](https://www.blaugrana.no/)
+## Using the [blaugrana.no](https://www.blaugrana.no/) API
 
-This repo is the frontend part of [blaugrana.no](https://www.blaugrana.no/). It communicates with a [WordPress/WordPress](https://github.com/WordPress/WordPress) backend that serves the actual content such as posts and pages. The frontend communicates with the backend using the [WordPress REST API](https://developer.wordpress.org/rest-api/) with custom endpoints.
+This repo is the frontend part of [blaugrana.no](https://www.blaugrana.no/). It communicates with a [WordPress/WordPress](https://github.com/WordPress/WordPress) backend that serves our posts and pages.
+
+The frontend communicates with the backend using the [WordPress REST API](https://developer.wordpress.org/rest-api/). We use custom endpoints for API versioning and cleaner response output. The default WordPress endpoints are also available at `https://api.blgr.app/wp-json/wp/v2`.
 
 ### Sample request
 
