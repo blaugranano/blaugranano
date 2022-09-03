@@ -13,6 +13,7 @@ import iconFacebook from '@carbon/icons/es/logo--facebook/32'
 import iconGitHub from '@carbon/icons/es/logo--github/32'
 import iconInstagram from '@carbon/icons/es/logo--instagram/32'
 import iconTwitter from '@carbon/icons/es/logo--twitter/32'
+import iconDiscord from '@carbon/icons/es/logo--discord/32'
 
 /**
 * Initialize Express
@@ -45,6 +46,7 @@ app.use(async (req, res, next) => {
     iconGitHub: toString(iconGitHub),
     iconInstagram: toString(iconInstagram),
     iconTwitter: toString(iconTwitter),
+    iconDiscord: toString(iconDiscord),
   }
 
   next()
