@@ -75,9 +75,10 @@ app.get('/', async (req, res) => {
 */
 app.get('/:postCategory/:postId/:postSlug', async (req, res) => {
   const { data: postData } = await bg.posts.get({ id: req.params.postId })
+  const { post_title: pageTitle } = postData || {}
 
   res.render('post', {
-    pageTitle: postData.post_title,
+    pageTitle,
     postData,
   })
 })
