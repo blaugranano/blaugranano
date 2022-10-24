@@ -2,7 +2,7 @@
 
 This is the source code for [blaugrana.no](https://www.blaugrana.no/), the website of [@blaugranano](https://github.com/blaugranano).
 
-## Current roadmap
+## TODO
 
 - [ ] Replace [pugjs/pug](https://github.com/pugjs/pug) with [facebook/react](https://github.com/facebook/react)
 - [ ] Add infinite post loop
